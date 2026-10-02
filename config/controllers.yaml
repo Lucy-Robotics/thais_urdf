@@ -30,15 +30,15 @@ left_arm_controller:
     interpolate_from_desired_state: true
     allow_nonzero_velocity_at_trajectory_end: false
     joints:
-      - left_shoulder_z_link_joint
-      - left_shoulder_x_link_joint
-      - left_elbow_x_link_joint
-      - left_wrist_z_link_joint
       - i01.leftHand.thumb_link_joint
       - i01.leftHand.index_link_joint
       - i01.leftHand.majeure_link_joint
       - i01.leftHand.ringFinger_link_joint
       - i01.leftHand.pinky_link_joint
+      - left_wrist_z_link_joint
+      - left_shoulder_z_link_joint
+      - left_shoulder_x_link_joint
+      - left_elbow_x_link_joint
     command_interfaces:
       - position
     state_interfaces:
