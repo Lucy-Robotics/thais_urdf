@@ -188,7 +188,7 @@ actuators:
     scale: 1
     servo_min_rad: 0
     servo_max_rad: 5.23599
-    servo_default_rad: 0
+    servo_default_rad: 1.7453292519943295
     enabled: true
   - id: left_thumb
     urdf_joint: i01.leftHand.thumb_link_joint
@@ -201,7 +201,7 @@ actuators:
     scale: 1
     servo_min_rad: 0
     servo_max_rad: 3.14159
-    servo_default_rad: 0
+    servo_default_rad: 1.7453292519943295
     enabled: true
   - id: left_index
     urdf_joint: i01.leftHand.index_link_joint
@@ -227,7 +227,7 @@ actuators:
     scale: 1
     servo_min_rad: 0
     servo_max_rad: 3.14159
-    servo_default_rad: 0
+    servo_default_rad: 1.7453292519943295
     enabled: true
   - id: left_ring
     urdf_joint: i01.leftHand.ringFinger_link_joint
@@ -240,7 +240,7 @@ actuators:
     scale: 1
     servo_min_rad: 0
     servo_max_rad: 3.14159
-    servo_default_rad: 0
+    servo_default_rad: 1.7453292519943295
     enabled: true
   - id: left_pinky
     urdf_joint: i01.leftHand.pinky_link_joint
@@ -253,7 +253,7 @@ actuators:
     scale: 1
     servo_min_rad: 0
     servo_max_rad: 3.141592653589793
-    servo_default_rad: 0
+    servo_default_rad: 1.7453292519943295
     enabled: true
   - id: right_shoulder_z
     urdf_joint: right_shoulder_z_link_joint
