@@ -29,7 +29,7 @@ For **InMoov i1 vs i2** scope and how to extend the YAML with **head / expressio
 
 `limit_min`, `limit_max`, and `default` are **servo-frame radians**: the angle the motor actually sees, before any URDF visualization convention. They bound electrical/mechanical travel in firmware and in **LucySystemHardware** after the URDF→servo mapping.
 
-They are **not** the same as the LCP slider’s joint-space meaning unless `offset = 0`, `direction = ±1`, and `scale = 1`. The control panel may **display** degrees at the UI boundary only; robot YAML, generator, HI, and firmware schemas use radians. Modbus/SHM wire encoding is **milliradians** (`rad × 1000`).
+They are **not** the same as the LCP slider’s joint-space meaning unless `offset = 0`, `direction = ±1`, and `scale = 1`. The control panel may **display** degrees at the UI boundary only; robot YAML, generator, HI, and SHM use **radians** (`f64` `ActuatorSharedState`). Pulse conversion stays at the MCU driver edge.
 
 Degree field names (`*_deg`) are **rejected** by schema validation.
 
