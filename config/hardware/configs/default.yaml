@@ -43,7 +43,7 @@ cameras:
     external: true
     sim_gz_topic: '/world/default/camera'
 
-  - realsense-rgb:
+  - id: realsense-rgb
     name: 'Realsense RGB'
     topic: '/realsense/realsense2_camera/color/image_raw'
     compressed_topic: '/realsense/realsense2_camera/color/image_raw/compressed'
@@ -51,7 +51,7 @@ cameras:
     external: false
     link: 'i01.head.eyeLeft_link'
 
-  - realsense-aligned-depth:
+  - id: realsense-aligned-depth
     name: 'Realsense Aligned Depth'
     topic: '/realsense/realsense2_camera/aligned_depth_to_color/image_raw'
     compressed_topic: '/realsense/realsense2_camera/aligned_depth_to_color/image_raw/compressed'
@@ -59,7 +59,7 @@ cameras:
     external: false
     link: 'i01.head.eyeLeft_link'
 
-  - left_eye_camera:
+  - id: left_eye_camera
     name: 'Left eye webcam'
     topic: '/camera/internal/left_eye/jpg'
     compressed_topic: '/camera/internal/left_eye/jpg/compressed'
@@ -67,7 +67,7 @@ cameras:
     external: false
     link: 'i01.head.eyeRight_link'
 
-  - right_eye_camera:
+  - id: right_eye_camera
     name: 'Right eye webcam'
     topic: '/camera/internal/right_eye/jpg'
     compressed_topic: '/camera/internal/right_eye/jpg/compressed'
