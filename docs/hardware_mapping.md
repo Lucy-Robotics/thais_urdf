@@ -22,14 +22,14 @@ For **InMoov i1 vs i2** scope and how to extend the YAML with **head / expressio
 - **`firmware`**: `source_dir` (typically `lucy_embedded_firmware`), `build_dir` — paths relative to the workspace `src/` for the pipeline.
 - **`controller_manager`**: e.g. `update_rate`.
 - **`boards`**: ordered map of board id → `serial_id` (optional USB serial for `picotool --ser`, alphanumeric or empty), **`board_class`** (`internal_servo_only` \| `internal_servo_i2c_pwm` \| `bus_servo_only`), optional **`slave_address`** (Modbus, default 1), **`internal_servo_slots`** (max valid `physical_pin` for actuators on that board), firmware target, compile definition, actuator/sensor topics, and `controller` (`name`, `type`). Optional **`firmware_crate`** overrides the default crate for that `board_class`. **Order** of keys is the order of generated ros2_control blocks and controller sections. **Board id** is also the firmware YAML basename: `config_<board_id>.yaml`. **No `/dev/ttyACM*`** here — serial devices are launch-time (`lucy_bringup` args), not committed hardware truth.
-- **`actuators`**: list of actuators with `urdf_joint` (must match URDF), `board`, `virtual_pin` (contiguous per board, used for host SHM / ros2_control ordering), `physical_pin` (**1..`boards.<id>.internal_servo_slots`**: becomes named channel `ServoN` in generated firmware YAML; board crate maps channel → GPIO), `servo_type`, calibration (`offset_rad`, `direction`, `scale`), limits (`servo_*_rad`), `enabled` (if `false`, the row is still listed in generated `ros2_control` and trajectory controllers, but omitted from firmware so the servo is not driven on the Pico).
+- **`actuators`**: list of actuators with `urdf_joint` (must match URDF), `board`, `virtual_pin` (contiguous per board, used for host SHM / ros2_control ordering), `physical_pin` (**1..`boards.<id>.internal_servo_slots`**: becomes named channel `ServoN` in generated firmware YAML; board crate maps channel → GPIO), `servo_type`, calibration (`offset`, `direction`, `scale`), limits (`limit_min / limit_max / default`), `enabled` (if `false`, the row is still listed in generated `ros2_control` and trajectory controllers, but omitted from firmware so the servo is not driven on the Pico).
 - **`sensors`**: finger pressure sensors; `associated_actuator` references an actuator `id`. Emitted into firmware YAML with channel `ADC{n}`.
 
-## Hardware angle limits (`servo_*_rad`)
+## Hardware angle limits (`limit_min / limit_max / default`)
 
-`servo_min_rad`, `servo_max_rad`, and `servo_default_rad` are **servo-frame radians**: the angle the motor actually sees, before any URDF visualization convention. They bound electrical/mechanical travel in firmware and in **LucySystemHardware** after the URDF→servo mapping.
+`limit_min`, `limit_max`, and `default` are **servo-frame radians**: the angle the motor actually sees, before any URDF visualization convention. They bound electrical/mechanical travel in firmware and in **LucySystemHardware** after the URDF→servo mapping.
 
-They are **not** the same as the LCP slider’s joint-space meaning unless `offset_rad = 0`, `direction = ±1`, and `scale = 1`. The control panel may **display** degrees at the UI boundary only; robot YAML, generator, HI, and firmware schemas use radians. Modbus/SHM wire encoding is **milliradians** (`rad × 1000`).
+They are **not** the same as the LCP slider’s joint-space meaning unless `offset = 0`, `direction = ±1`, and `scale = 1`. The control panel may **display** degrees at the UI boundary only; robot YAML, generator, HI, and firmware schemas use radians. Modbus/SHM wire encoding is **milliradians** (`rad × 1000`).
 
 Degree field names (`*_deg`) are **rejected** by schema validation.
 
@@ -41,18 +41,18 @@ Each `urdf_joint` has `<limit lower="…" upper="…"/>` in the URDF (radians). 
 
 RViz-only / mock hardware uses **`lucy_ros2_control/LucySystemHardware`** with `publish_actuators:=false` so URDF limits are enforced the same way as on real hardware, without Modbus.
 
-## `offset_rad`, `direction`, and `scale` (URDF command ↔ servo)
+## `offset`, `direction`, and `scale` (URDF command ↔ servo)
 
 Symmetric mapping (used by **LucySystemHardware**, firmware, and the LCP):
 
 ```text
-joint_rad = (servo_rad - offset_rad) * direction * scale
-servo_rad = joint_rad / (direction * scale) + offset_rad
+joint_rad = (servo_rad - offset) * direction * scale
+servo_rad = joint_rad / (direction * scale) + offset
 ```
 
 - **`direction`**: `+1` or `-1` if the horn is mounted opposite the positive URDF axis.
 - **`scale`**: ratio between a change in **commanded joint angle** and **servo angle** when the linkage is not 1:1.
-- **`offset_rad`**: shift so URDF “zero” matches the real neutral assembly (e.g. `offset_rad: 1.5708` with a 0–π servo maps URDF 0 to servo π/2).
+- **`offset`**: shift so URDF “zero” matches the real neutral assembly (e.g. `offset: 1.5708` with a 0–π servo maps URDF 0 to servo π/2).
 
 These are **calibration between ros2_control / URDF joint commands and the servo command**, not an RViz-only layer. Generated ros2_control params are the source of truth for the plugin and for the panel’s publish/subscribe conversion.
 
