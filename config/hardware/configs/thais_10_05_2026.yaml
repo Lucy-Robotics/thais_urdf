@@ -97,12 +97,12 @@ actuators:
     virtual_pin: 0
     physical_pin: 10
     servo_type: '270'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 155
-    servo_max_deg: 165
-    servo_default_deg: 160
+    limit_min: 2.70526
+    limit_max: 2.87979
+    default: 2.79253
     enabled: true
   - id: right_shoulder_x
     urdf_joint: right_shoulder_x_link_joint
@@ -110,12 +110,12 @@ actuators:
     virtual_pin: 1
     physical_pin: 11
     servo_type: '270'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 140
-    servo_max_deg: 180
-    servo_default_deg: 180
+    limit_min: 2.44346
+    limit_max: 3.14159
+    default: 3.14159
     enabled: true
   - id: right_elbow_x
     urdf_joint: right_elbow_x_link_joint
@@ -123,12 +123,12 @@ actuators:
     virtual_pin: 2
     physical_pin: 12
     servo_type: '270'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 100
-    servo_max_deg: 110
-    servo_default_deg: 100
+    limit_min: 1.74533
+    limit_max: 1.91986
+    default: 1.74533
     enabled: true
   - id: right_wrist_z
     urdf_joint: right_wrist_z_link_joint
@@ -136,12 +136,12 @@ actuators:
     virtual_pin: 3
     physical_pin: 13
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 0
-    servo_max_deg: 230
-    servo_default_deg: 150
+    limit_min: 0
+    limit_max: 4.01426
+    default: 2.61799
     enabled: true
   - id: right_thumb
     urdf_joint: i01.rightHand.thumb_link_joint
@@ -149,12 +149,12 @@ actuators:
     virtual_pin: 4
     physical_pin: 14
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 36
-    servo_max_deg: 150
-    servo_default_deg: 36
+    limit_min: 0.62832
+    limit_max: 2.61799
+    default: 0.62832
     enabled: true
   - id: right_index
     urdf_joint: i01.rightHand.index_link_joint
@@ -162,12 +162,12 @@ actuators:
     virtual_pin: 5
     physical_pin: 15
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 16
-    servo_max_deg: 150
-    servo_default_deg: 16
+    limit_min: 0.27925
+    limit_max: 2.61799
+    default: 0.27925
     enabled: true
   - id: right_middle
     urdf_joint: i01.rightHand.majeure_link_joint
@@ -175,12 +175,12 @@ actuators:
     virtual_pin: 6
     physical_pin: 16
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 21
-    servo_max_deg: 150
-    servo_default_deg: 21
+    limit_min: 0.36652
+    limit_max: 2.61799
+    default: 0.36652
     enabled: true
   - id: right_ring
     urdf_joint: i01.rightHand.ringFinger_link_joint
@@ -188,12 +188,12 @@ actuators:
     virtual_pin: 7
     physical_pin: 17
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 33
-    servo_max_deg: 150
-    servo_default_deg: 33
+    limit_min: 0.57596
+    limit_max: 2.61799
+    default: 0.57596
     enabled: true
   - id: right_pinky
     urdf_joint: i01.rightHand.pinky_link_joint
@@ -201,12 +201,12 @@ actuators:
     virtual_pin: 8
     physical_pin: 18
     servo_type: '300'
-    offset_deg: 0
+    offset: 0
     direction: 1
     scale: 1
-    servo_min_deg: 30
-    servo_max_deg: 150
-    servo_default_deg: 30
+    limit_min: 0.5236
+    limit_max: 2.61799
+    default: 0.5236
     enabled: true
 sensors:
   - id: right_thumb_pressure
