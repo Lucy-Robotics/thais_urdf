@@ -76,7 +76,7 @@ cameras:
     link: 'i01.head.eyeLeft_link'
 
 firmware:
-  source_dir: micro_ros_raspberrypi_pico_sdk
+  source_dir: lucy_embedded_firmware
   build_dir: build
 controller_manager:
   update_rate: 100
