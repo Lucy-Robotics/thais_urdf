@@ -94,7 +94,6 @@ actuators:
   - id: right_shoulder_z
     urdf_joint: right_shoulder_z_link_joint
     board: rp2040_right_arm
-    virtual_pin: 0
     physical_pin: 10
     servo_type: '270'
     offset: 0
@@ -107,7 +106,6 @@ actuators:
   - id: right_shoulder_x
     urdf_joint: right_shoulder_x_link_joint
     board: rp2040_right_arm
-    virtual_pin: 1
     physical_pin: 11
     servo_type: '270'
     offset: 0
@@ -120,7 +118,6 @@ actuators:
   - id: right_elbow_x
     urdf_joint: right_elbow_x_link_joint
     board: rp2040_right_arm
-    virtual_pin: 2
     physical_pin: 12
     servo_type: '270'
     offset: 0
@@ -133,7 +130,6 @@ actuators:
   - id: right_wrist_z
     urdf_joint: right_wrist_z_link_joint
     board: rp2040_right_arm
-    virtual_pin: 3
     physical_pin: 13
     servo_type: '300'
     offset: 0
@@ -146,7 +142,6 @@ actuators:
   - id: right_thumb
     urdf_joint: i01.rightHand.thumb_link_joint
     board: rp2040_right_arm
-    virtual_pin: 4
     physical_pin: 14
     servo_type: '300'
     offset: 0
@@ -159,7 +154,6 @@ actuators:
   - id: right_index
     urdf_joint: i01.rightHand.index_link_joint
     board: rp2040_right_arm
-    virtual_pin: 5
     physical_pin: 15
     servo_type: '300'
     offset: 0
@@ -172,7 +166,6 @@ actuators:
   - id: right_middle
     urdf_joint: i01.rightHand.majeure_link_joint
     board: rp2040_right_arm
-    virtual_pin: 6
     physical_pin: 16
     servo_type: '300'
     offset: 0
@@ -185,7 +178,6 @@ actuators:
   - id: right_ring
     urdf_joint: i01.rightHand.ringFinger_link_joint
     board: rp2040_right_arm
-    virtual_pin: 7
     physical_pin: 17
     servo_type: '300'
     offset: 0
@@ -198,7 +190,6 @@ actuators:
   - id: right_pinky
     urdf_joint: i01.rightHand.pinky_link_joint
     board: rp2040_right_arm
-    virtual_pin: 8
     physical_pin: 18
     servo_type: '300'
     offset: 0
@@ -213,8 +204,7 @@ sensors:
     type: pressure
     associated_actuator: right_thumb
     board: rp2040_right_arm
-    virtual_pin: 0
-    physical_pin: 16
+    physical_pin: 1
     min_value: null
     max_value: null
     enabled: false
@@ -222,8 +212,7 @@ sensors:
     type: pressure
     associated_actuator: right_index
     board: rp2040_right_arm
-    virtual_pin: 1
-    physical_pin: 17
+    physical_pin: 2
     min_value: null
     max_value: null
     enabled: false
@@ -231,8 +220,7 @@ sensors:
     type: pressure
     associated_actuator: right_middle
     board: rp2040_right_arm
-    virtual_pin: 2
-    physical_pin: 18
+    physical_pin: 3
     min_value: null
     max_value: null
     enabled: false
@@ -240,8 +228,7 @@ sensors:
     type: pressure
     associated_actuator: right_ring
     board: rp2040_right_arm
-    virtual_pin: 3
-    physical_pin: 19
+    physical_pin: 4
     min_value: null
     max_value: null
     enabled: false
@@ -249,8 +236,7 @@ sensors:
     type: pressure
     associated_actuator: right_pinky
     board: rp2040_right_arm
-    virtual_pin: 4
-    physical_pin: 20
+    physical_pin: 5
     min_value: null
     max_value: null
     enabled: false
