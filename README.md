@@ -168,4 +168,4 @@ CI: `.github/workflows/ci.yml` builds `thais_urdf` + `lucy_ros2_control`, runs `
 
 ## Maintainer
 
-Sentience Robotics Team — `contact@sentience-robotics.fr`.
+Lucy Robotics Team — `contact@lucy-robotics.com`.
