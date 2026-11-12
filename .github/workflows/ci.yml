@@ -15,4 +15,12 @@ jobs:
       package_name: thais_urdf
       ros_distro: humble
       gz_packages: gz-harmonic
+
+  upload-coverage:
+    needs: build-and-test
+    uses: Lucy-Robotics/.github/.github/workflows/codecov-upload.yaml@cma/fix-robot-package-ci-generalize
+    with:
+      artifact_name: coverage-thais_urdf
+      flags: thais_urdf
+      name: thais_urdf
     secrets: inherit
